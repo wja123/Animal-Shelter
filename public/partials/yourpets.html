@@ -1,0 +1,94 @@
+<div class="your-pets" ng-controller ="clientPetsCtrl">
+<div class="petListing">
+  
+  <div class="row">
+    <div class="col s12 m6 l4" ng-repeat="pet in allPets">
+
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" ng-src="{{pet.image}}">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">{{pet.name}}<i class="material-icons right">more_vert</i></span>
+        </div>
+        <div class="card-reveal">
+          <div class="cardStateOne" ng-hide="editView">
+            <span class="card-title grey-text text-darken-4">{{pet.name}}<i class="material-icons right">close</i></span>
+            <p>Species: {{pet.species}}</p>
+            <p>Breed: {{pet.breed}}</p>
+            <p>About: {{pet.about}}</p>
+            <p>Born: {{pet.birthDate | date: 'longDate'}}</p>
+
+            <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+              <a class="btn-floating btn-small red">
+                <i class="small mdi-navigation-menu"></i>
+              </a>
+              <ul>
+                <li><a class="btn-floating red" ng-click="editPets(pet)"><i class="material-icons">mode_edit</i></a></li>
+                <li><a class="btn-floating blue" ng-click="deletePet(pet)"><i class="material-icons">delete</i></a></li>
+                <li><a class="btn-floating green" ng-click="addPerson(pet)"><i class="material-icons">person_add</i></a></li>
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="cardStateTwo" ng-show="editView">
+            <span class="card-title grey-text text-darken-4">Edit Pet Profile<i class="material-icons right" ng-click="closeCard()">close</i></span>
+
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input placeholder="Placeholder" id="client_name" type="text" class="validate" ng-model="editPet.name">
+                    <label class ="active" for="name">Name</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <input id="imageUrl" type="text" class="validate" ng-model="editPet.image">
+                    <label  class ="active" for="image_url">Image Url</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input  id="Species" type="text" class="validate" ng-model="editPet.species">
+                    <label  class ="active" for="Species">Species</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="breed" type="text" class="validate" ng-model="editPet.breed">
+                    <label  class ="active" for="breed">Breed</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="about" type="text" class="validate" ng-model="editPet.about">
+                    <label  class ="active" for="about">About</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="about" type="date" class="validate" ng-model="editPet.birthDate">
+                    <label  class ="active" for="about">Birth Date</label>
+                  </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="updatePet(editPet)">Submit
+                  <i class="material-icons right">send</i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+</div>
+</div>

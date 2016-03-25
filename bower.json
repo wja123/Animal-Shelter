@@ -1,0 +1,21 @@
+{
+  "name": "hw5-17",
+  "description": "",
+  "main": "",
+  "authors": [
+    "wja123 <w.j.alag@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.2"
+  }
+}

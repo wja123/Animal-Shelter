@@ -1,0 +1,128 @@
+<div ng-controller="clientsCtrl">
+
+  <div class="row" >
+    <div class="col s12 m6 l4" ng-repeat="client in allClients">
+
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" ng-src="{{client.image}}">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">{{client.name}}<i class="material-icons right">more_vert</i></span>
+        </div>
+        <div class="card-reveal">
+          <div class="cardStateOne" ng-hide="editView">
+            <span class="card-title grey-text text-darken-4">{{client.name}}<i class="material-icons right">close</i></span>
+            <p>Preferred Species: {{client.prefSpecies}}</p>
+            <p>Preferred Breed: {{client.prefBreed}}</p>
+            <p>About: {{client.about}}</p>
+            <p>Joined: {{client.joined | date: 'longDate'}}</p>
+
+            <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
+              <a class="btn-floating btn-small red">
+                <i class="small mdi-navigation-menu"></i>
+              </a>
+              <ul>
+                <li><a class="btn-floating red" ng-click="editClient(client)"><i class="material-icons">mode_edit</i></a></li>
+                <li><a class="btn-floating yellow darken-1" ng-click="seeYourPets(client)"><i class="material-icons">pets</i></a></li>
+                <li><a class="btn-floating green" ng-click ="getMorePets(client)"><i class="material-icons">add</i></a></li>
+                <li><a class="btn-floating blue" ng-click="deleteClient(client)"><i class="material-icons">delete</i></a></li>
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="cardStateTwo" ng-show="editView">
+            <span class="card-title grey-text text-darken-4">Edit Client Profile<i class="material-icons right" ng-click="closeCard()">close</i></span>
+
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input placeholder="Placeholder" id="client_name" type="text" class="validate" ng-model="editClient.name">
+                    <label class ="active" for="name">Name</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <input id="imageUrl" type="text" class="validate" ng-model="editClient.image">
+                    <label  class ="active" for="image_url">Image Url</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input  id="prefSpecies" type="text" class="validate" ng-model="editClient.prefSpecies">
+                    <label  class ="active" for="prefSpecies">Preferred Species</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="prefBreed" type="text" class="validate" ng-model="editClient.prefBreed">
+                    <label  class ="active" for="prefBreed">Preferred Breed</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="about" type="text" class="validate" ng-model="editClient.about">
+                    <label  class ="active" for="about">About</label>
+                  </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="updateClient(editClient)">Submit
+                  <i class="material-icons right">send</i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="addClient">
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input required id="newClientNAme" type="text" class="validate" ng-model ="newClient.name">
+            <label class="active" for="newclient_name">Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input required id="newClientImage" type="text" class="validate" ng-model ="newClient.image">
+            <label class="active" for="newclient_Image">Image URL</label>
+          </div>
+        </div>
+                <div class="row">
+          <div class="input-field col s12">
+            <input required id="newclient_about" type="text" class="validate" ng-model ="newClient.about">
+            <label class="active" for="newclient_About">About</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s4">
+            <input required id="newClientPrefspecies" type="text" class="validate" ng-model="newClient.prefSpecies">
+            <label class="active" for="newClientPrefSpecies">Preferred Species (Dog, Cat, etc.)</label>
+          </div>
+          <div class="input-field col s4">
+            <input required id="newClientPreferredBreed" type="text" class="validate" ng-model="newClient.prefBreed">
+            <label class="active" for="newClientPreferredBreed">Preferred Breed(German Shepherd, Persian, etc.)</label>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+           <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="addClient(newClient)">Add New Client
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+</div>

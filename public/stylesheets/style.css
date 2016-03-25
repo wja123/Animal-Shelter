@@ -1,0 +1,18 @@
+@import url(https://fonts.googleapis.com/css?family=Kaushan+Script);
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.main-nav-bar{
+  border:2px solid black;
+  margin:0%;
+}
+
+.brand-logo{
+font-family: 'Kaushan Script', cursive;
+}
